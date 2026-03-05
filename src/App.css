@@ -1,38 +1,424 @@
-.App {
+/* ===== 기본 설정 ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f0ebe3;
+  font-family: 'Noto Serif KR', 'Georgia', serif;
+  color: #3a3228;
+}
+
+.invitation {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #faf7f2;
+  overflow: hidden;
+}
+
+/* ===== 1. 커버 ===== */
+.cover {
+  position: relative;
+  width: 100%;
+}
+
+.cover-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.cover-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 48px 32px 40px;
+  background: linear-gradient(to top, rgba(30,22,15,0.75) 0%, transparent 100%);
+  color: #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cover-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  opacity: 0.8;
+  margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cover-names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cover-heart {
+  font-size: 16px;
+  color: #e8b4b8;
+}
+
+.cover-date {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  opacity: 0.85;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+}
+
+/* ===== 공통 섹션 ===== */
+section {
+  padding: 56px 28px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: #9a8070;
+  margin-bottom: 28px;
+}
+
+.divider {
+  text-align: center;
+  color: #c4b5a5;
+  font-size: 18px;
+  letter-spacing: 0.4em;
+  margin: 20px 0;
+}
+
+/* ===== 2. 인사말 ===== */
+.greeting {
+  text-align: center;
+  background: #faf7f2;
+}
+
+.greeting-text {
+  font-size: 15px;
+  line-height: 2;
+  color: #4a3f35;
+  word-break: keep-all;
+  margin: 24px 0 32px;
+}
+
+.greeting-parents {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.parents-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #6b5d52;
+}
+
+.parents-row strong {
+  font-weight: 600;
+  font-size: 14px;
+  color: #3a3228;
+}
+
+/* ===== 3. 캘린더 ===== */
+.calendar-section {
+  background: #f5efe8;
+  text-align: center;
+}
+
+.calendar-date-text {
+  font-size: 14px;
+  color: #6b5d52;
+  margin-bottom: 28px;
+  letter-spacing: 0.05em;
+}
+
+.calendar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 16px 24px;
+  box-shadow: 0 2px 16px rgba(100,80,60,0.08);
+}
+
+.cal-header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 16px;
+  gap: 2px;
+}
+
+.cal-header span:first-child {
+  font-size: 12px;
+  color: #9a8070;
+  letter-spacing: 0.1em;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.cal-month {
+  font-size: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: #3a3228;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day-name {
+  font-size: 11px;
+  color: #9a8070;
+  text-align: center;
+  padding: 4px 0 8px;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.05em;
+}
+
+.cal-day {
+  font-size: 13px;
+  text-align: center;
+  padding: 6px 2px;
+  color: #4a3f35;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cal-day--active {
+  background: #c4a882;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ===== 4. 오시는 길 ===== */
+.location-section {
+  background: #faf7f2;
+  text-align: center;
+}
+
+.location-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #3a3228;
+  margin-bottom: 8px;
+}
+
+.location-address {
+  font-size: 13px;
+  color: #6b5d52;
+  margin-bottom: 20px;
+}
+
+.map-placeholder {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.map-placeholder img {
+  width: 100%;
+  display: block;
+}
+
+.transport {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  background: #f5efe8;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.transport-item {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.transport-item strong {
+  min-width: 36px;
+  color: #c4a882;
+  font-weight: 600;
+}
+
+.transport-item span {
+  color: #4a3f35;
+}
+
+/* ===== 5. 갤러리 ===== */
+.gallery-section {
+  background: #f5efe8;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== 6. 마음 전하기 ===== */
+.account-section {
+  background: #faf7f2;
+  text-align: center;
+}
+
+.account-desc {
+  font-size: 14px;
+  color: #6b5d52;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.account-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.account-card {
+  background: #f5efe8;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.account-role {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #9a8070;
+  margin-bottom: 6px;
+}
+
+.account-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #3a3228;
+  margin-bottom: 4px;
+}
+
+.account-number {
+  font-size: 13px;
+  color: #6b5d52;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #c4a882;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+}
+
+.copy-btn:active {
+  background: #a8906a;
+}
+
+/* ===== 7. 연락처 ===== */
+.contact-section {
+  background: #f5efe8;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-group {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 14px;
+  text-align: center;
+}
+
+.contact-role {
+  font-size: 11px;
+  color: #9a8070;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.contact-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #3a3228;
+  margin-bottom: 12px;
+}
+
+.contact-btn {
+  display: inline-block;
+  background: #f5efe8;
+  color: #6b5d52;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ===== 푸터 ===== */
+.footer {
+  background: #3a3228;
+  color: #c4b5a5;
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 13px;
+  line-height: 2;
+  letter-spacing: 0.1em;
 }
